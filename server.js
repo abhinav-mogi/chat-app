@@ -11,12 +11,15 @@ mclient.connect('mongodb://127.0.0.1:27017')
 
   let dbObj=Ref.db('chat-app')
   let userCollection=dbObj.collection("users")
-
-  app.set("userCollection",userCollection)
+  let msgCollection=dbObj.collection("message")
+  app.set("msgCollection",msgCollection);
+  app.set("userCollection",userCollection);
 
   console.log("Connected to DB successfully")
 })
 .catch(err=>console.log("Connection err is ",err))
+
+
 
 const userApp=require("./API/userAPI")
 

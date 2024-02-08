@@ -1,0 +1,11 @@
+
+
+.sent {
+    background-color: #DCF8C6;
+    border-radius: 10px;
+}
+
+.received {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+}

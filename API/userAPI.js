@@ -9,6 +9,41 @@ userApp.use(exp.json())
 const asynchandler=require('express-async-handler')
 
 
+
+
+userApp.post('/messages', asynchandler(async (req, res) => {
+  try {
+    const data = req.body;
+    // console.log(data);
+    const msg=req.app.get("msgCollection")
+    // const msgObj = { sender, receiver, content };
+    await msg.insertOne(data);
+    res.json({ success: true, message:"Message saved in db" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+}));
+
+
+userApp.get('/conversation/:senderId/:receiverId',asynchandler(async(request,response)=>{
+      try {
+      let { senderId,receiverId} = request.params;
+      const msg=request.app.get("msgCollection")
+      const messages = await msg.find({
+        $or: [
+          { sender:senderId, receiver: receiverId },
+          { sender: receiverId, receiver: senderId }
+        ]
+      }).sort({ timestamp: 1 }).toArray();
+      // console.log(senderId,receiverId,messages)
+      response.json({ success: true, msg:"Messages retrieved",payload:messages });
+      } catch (err) {
+      console.error(err.message);
+      response.status(500).json({ success: false, message: 'Server Error' });
+      }
+}))
+
 userApp.get("/get-users",asynchandler(async(request,response)=>{
   try{
     const userObj=request.app.get("userCollection")
