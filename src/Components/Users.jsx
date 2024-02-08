@@ -6,7 +6,7 @@ const Users = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [users, setUsers] = useState([]);
   const senderUser = localStorage.getItem("user");
-
+  const currentUser=localStorage.getItem("user")
   useEffect(() => {
     const getUsers = async () => {
       try {
@@ -30,6 +30,7 @@ const Users = () => {
 
   return (
     <div className="container">
+      <h1 className='fw-bold text-dark display-5'>Welcome {currentUser}!!</h1>
       <div className="row mt-3">
         <div className="col-md-3">
           <div className="user-list-container border rounded border-dark">

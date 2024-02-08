@@ -1,11 +1,24 @@
-
-
 .sent {
-    background-color: #DCF8C6;
-    border-radius: 10px;
+  background-color: #DCF8C6;
+  border-radius: 10px;
+  text-align: right;
+  max-width: 50%;
+  margin-left: auto;
+  margin-bottom: 10px;
+  margin-right: 12px;
+  padding: 8px;
 }
 
 .received {
-    background-color: #E2E2E2;
-    border-radius: 10px;
+  background-color: #E2E2E2;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 50%;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.message {
+  display: inline-block;
 }

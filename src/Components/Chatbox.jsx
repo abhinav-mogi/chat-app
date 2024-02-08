@@ -51,7 +51,7 @@ const Chatbox = ({ selectedUser }) => {
   return (
     <div className="chat-box-content border rounded border-dark p-3 mt-3">
       <h2>Chatting with {selectedUser}</h2>
-      <div className="messages-container">
+      <div className="messages-container row ms-3">
         {messages.map((message) => (
           <div  className={`message ${message.sender === senderUser ? 'sent' : 'received'} mt-2 rounded border border-dark p-2`}>
             <span className="sender">{message.sender === senderUser ? "You" : message.sender}: </span>

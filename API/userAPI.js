@@ -96,7 +96,7 @@ userApp.post('/login',asynchandler(async(request,response)=>{
     }
     else{
       //create JWT token
-      let jwtToken=jwt.sign({username:userOfDB.username},"abcdef",{expiresIn:"1d"})
+      let jwtToken=jwt.sign({username:userOfDB.username},"abcdef",{expiresIn:"1hr"})
       response.status(200).send({message:"success",token:jwtToken,username:userOfDB})
     }
 
